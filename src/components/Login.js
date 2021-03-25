@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Card, Form, Button, Alert} from "react-bootstrap";
 import { useAuth } from "../context/AuthContext";
-import {Link } from 'react-router-dom';
+import {Link, useHistory } from 'react-router-dom';
 
 export default function Login() {
     const emailRef = useRef();
@@ -9,6 +9,7 @@ export default function Login() {
     const { login } = useAuth();
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+    const history = useHistory();
     
 
     async function handleSubmit(e) {
@@ -18,6 +19,7 @@ export default function Login() {
             setError("");
             setLoading(true);
             await login(emailRef.current.value, passwordRef.current.value);
+            history.push("/");
         }
         catch {
             setError("Failed to Log in");
@@ -47,7 +49,7 @@ export default function Login() {
             </Card.Body>
         </Card>
         <div className="w-100 text-center mt-2">
-            Need an Account? <Link to="/signup">Login</Link> 
+            Need an Account? <Link to="/signup">Sign Up</Link> 
         </div>
     </>
     );
