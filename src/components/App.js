@@ -8,6 +8,8 @@ import { AuthProvider } from "./../context/AuthContext";
 import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"; 
 
+import PrivateRoute from './PrivateRoute';
+
 function App() {
   return (
     <Container
@@ -18,7 +20,7 @@ function App() {
         <Router>
         <AuthProvider>
           <Switch>
-            <Route exact path="/" component={ Dashboard }/>
+            <PrivateRoute exact path="/" component={ Dashboard }/>
             <Route path="/signup" component={ Signup }/>
             <Route path="/login" component={ Login }/>
           </Switch>
