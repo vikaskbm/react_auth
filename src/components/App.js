@@ -3,6 +3,7 @@ import React from "react";
 import Signup from "./Signup";
 import Dashboard from "./Dashboard";
 import Login from "./Login";
+import ForgotPassword from "./ForgotPassword";
 import { AuthProvider } from "./../context/AuthContext";
 
 import { Container } from "react-bootstrap";
@@ -23,6 +24,7 @@ function App() {
             <PrivateRoute exact path="/" component={ Dashboard }/>
             <Route path="/signup" component={ Signup }/>
             <Route path="/login" component={ Login }/>
+            <Route path="/forgot-password" component={ ForgotPassword }/>
           </Switch>
         </AuthProvider>  
         </Router>
